@@ -1,0 +1,102 @@
+.heroSection{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  background-color: #050A26;
+  color: white;
+}
+
+.heroSection div{
+  padding-left: 1rem;
+  padding-top: 1rem;
+  margin: 0 auto;
+}
+
+.heroSection h1{
+  font-size: 3.6rem;
+  font-weight: bold;
+}
+
+.heroSection h2{
+  font-size: 2.5rem;
+  font-weight: 200;
+}
+
+.heroSection p{
+  font-size: 1.4rem;
+  margin-top: 4px;
+  max-width: 70%;
+  color: #9295A6;
+}
+
+.heroSection div.heroInfo{
+  width: 100vw;
+  max-width: 90%;
+  justify-content: space-around;
+  padding-left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.heroSection div.heroInfo div.redesSociais{
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  gap: 20px;
+  padding-left: 0;
+}
+
+.heroSection div.heroInfo div.linguagens{
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: flex-start;
+  gap: 20px;
+  padding-left: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .heroSection h1{
+    font-size: 2.6rem;
+  }
+
+  .heroSection h2{
+    font-size: 2rem;
+  }
+
+  .heroSection p{
+    font-size: 1.2rem;
+  }
+
+  .heroSection div.heroInfo{
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .heroSection div.heroInfo div.linguagens{
+    width: 100%;
+  } 
+
+  .heroSection div.heroInfo div.redesSociais{
+    margin-top: 20px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .heroSection h1{
+    font-size: 2rem;
+  }
+
+  .heroSection h2{
+    font-size: 1.5rem;
+  }
+
+  .heroSection p{
+    max-width: 90%;
+  }
+
+}
+
