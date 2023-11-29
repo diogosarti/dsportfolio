@@ -5,13 +5,13 @@ import { FaJava, FaReact, FaNodeJs } from "react-icons/fa6";
 import { BiLogoPostgresql } from "react-icons/bi";
 import Link from "next/link";
 
-export default function HeroSection({ className }) {
+export default function HeroSection({id, className }) {
   return (
-    <section className="heroSection">
+    <section id={id} className="heroSection">
       <div className="container">
-        <h2>Olá! 👋</h2>
+        <h2>Olá! 👋 meu nome é</h2>
         <h1>
-          Meu nome é Diogo Sarti <br /> FullStack Developer
+          Diogo Sarti, <br /> FullStack Developer
         </h1>
         <p>
           Minha jornada na programação começou em 2020, desenvolvendo um
@@ -21,12 +21,12 @@ export default function HeroSection({ className }) {
 
       <div className="heroInfo">
         <div className="linguagens">
-          <FaJava size={50} />
-          <SiSpring size={50} />
-          <FaNodeJs size={50} />
-          <FaReact size={50} />
-          <SiPhp size={50} />
-          <BiLogoPostgresql size={50} />
+          <FaJava className="linguagem" />
+          <SiSpring className="linguagem" />
+          <FaNodeJs className="linguagem" />
+          <FaReact className="linguagem" />
+          <SiPhp className="linguagem" />
+          <BiLogoPostgresql className="linguagem" />
         </div>
         <div className="redesSociais">
           <Link href="https://github.com/diogosarti" target="_blank">

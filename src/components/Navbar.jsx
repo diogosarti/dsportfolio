@@ -1,18 +1,40 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TiThMenu, TiTimes } from "react-icons/ti";
 import Dropdown from "./Dropdown";
 
-export default function Navbar({className}) {
+export default function Navbar({ className }) {
   const [navbar, setNavbar] = useState(false);
+  const [isTransparent, setIsTransparent] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsTransparent(true);
+      } else {
+        setIsTransparent(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const menu = [
-    { name: "Sobre", url: "/#sobre" },
+    { name: "Sobre", url: "about" },
     { name: "Portfólio", url: "/#portfolio" },
   ];
   return (
-    <header className={className}>
-      <nav className="fixed w-full bg-[#050A26] shadow">
+    <header className="">
+      <nav
+        className={
+          "fixed w-full bg-[#050A26] shadow " +
+          (isTransparent ? "translucent-bg" : "")
+        }
+      >
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
           <div>
             <div className="flex items-center justify-between py-5 md:py-5 md:block">
@@ -20,7 +42,7 @@ export default function Navbar({className}) {
                 <div className="avatar">
                   <div className="w-auto rounded">
                     {/* <img src="" /> */}
-                    <h1 className="text-3xl text-white font-bold">
+                    <h1 className="avatar-text text-3xl text-white font-bold">
                       Diogo Sarti
                     </h1>
                   </div>
@@ -52,17 +74,26 @@ export default function Navbar({className}) {
                     {dropdown ? (
                       <Dropdown name={name} dropdownItems={dropdown} />
                     ) : (
-                      <Link href={url}>{name}</Link>
+                      <button
+                        onClick={() => {
+                          scrollIntoView(url), setNavbar(false);
+                        }}
+                        href="#"
+                      >
+                        {name}
+                      </button>
                     )}
                   </li>
                 ))}
                 <li>
-                  <Link
-                    className="hover:text-white hover:bg-transparent text-[#050A26] transition-all bg-white p-3 rounded-full border-2 border-white"
-                    href={"/#contratar"}
+                  <button
+                    onClick={() => {
+                      scrollIntoView("contratar"), setNavbar(false);
+                    }}
+                    className="hover:text-white hover:bg-transparent text-[#050A26] transition-all bg-white p-3 rounded-full border-2 border-white btn-contratar"
                   >
                     Contratar
-                  </Link>
+                  </button>
                 </li>
               </ul>
             </div>
@@ -72,3 +103,13 @@ export default function Navbar({className}) {
     </header>
   );
 }
+
+export const scrollIntoView = (id) => {
+  let element = document.getElementById(id);
+  if (!element) return;
+  element.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+    inline: "start",
+  });
+};
